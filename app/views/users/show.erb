@@ -1,7 +1,7 @@
 
-<p> Here are <%=@user.username%>'s books</p>
-<% @user.books.each do |book| %>
+<p><%=@user.username%>'s Shopping List</p>
+<% @user.items.each do |item| %>
   <div>
-    <%= book.title %>
+    <%= item.name %>
   </div>
 <% end %>
