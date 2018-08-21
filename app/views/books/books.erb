@@ -1,0 +1,14 @@
+<h1> Welcome, <%= current_user.username %></h1>
+
+<% unless locals.empty? %>
+  <p><%= message %></p>
+<% end %>
+
+<h2> All the Books! </h2>
+
+<% @books.each do |book| %>
+  <div>
+    <%= book.title %>
+  </div>
+<% end %>
+

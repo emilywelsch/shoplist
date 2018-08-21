@@ -1,0 +1,7 @@
+
+<p> Here are <%=@user.username%>'s books</p>
+<% @user.books.each do |book| %>
+  <div>
+    <%= book.title %>
+  </div>
+<% end %>

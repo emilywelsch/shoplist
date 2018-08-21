@@ -1,0 +1,12 @@
+
+<% unless locals.empty? %>
+  <%= message %>
+<% end %>
+
+<h1>Login to Users-Books!</h1>
+<form method="post" action="/login">
+  <input type="text" name="username" placeholder="Username:">
+  <input type="text" name="password" placeholder="Password:">
+
+  <button type="submit" value="submit">submit</button>
+</form>
