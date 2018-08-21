@@ -5,8 +5,8 @@ class UsersController < ApplicationController
       if @user = User.find_by_slug(params[:slug])
         erb :'users/show'
       else
-        @books = Book.all
-        erb :'books/books', locals: {message: "I don't recognize the user whose books you tried to view."}
+        @items = Item.all
+        erb :'items/items', locals: {message: "I don't recognize the user whose items you tried to view."}
       end
     else
       erb :'users/login', locals: {message: "Please sign in to view content."}
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :'users/create_user', locals: {message: "Please sign up before you sign in"}
     else
-      redirect to '/books'
+      redirect to '/items'
     end
   end
 
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect to '/books'
+      redirect to '/items'
     else
       erb :'users/create_user'
     end
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :'users/login'
     else
-      redirect to '/books'
+      redirect to '/items'
     end
   end
 
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
     user = User.find_by(:username => params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect to '/books'
+      redirect to '/items'
     else
       redirect to '/signup'
     end
