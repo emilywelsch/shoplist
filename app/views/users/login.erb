@@ -3,10 +3,9 @@
   <%= message %>
 <% end %>
 
-<h1>Login to Users-Books!</h1>
-<form method="post" action="/login">
-  <input type="text" name="username" placeholder="Username:">
-  <input type="text" name="password" placeholder="Password:">
-
-  <button type="submit" value="submit">submit</button>
+<h1>Login to ShopList!</h1>
+<form method="POST" action="/login">
+  <input type="text" name="username" id="username" placeholder="Username">
+  <input type="text" name="password" id="password" placeholder="Password">
+  <button type="submit" id="submit" value="Log In"></button>
 </form>
