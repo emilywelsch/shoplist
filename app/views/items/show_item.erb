@@ -1,0 +1,8 @@
+<p><%= @item.name %>
+
+<form method="POST" action="/items/<%=@item.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" id="submit" value="Delete Item">
+</form>
+
+<a href="/items/<%=@item.id%>/edit"><button>Edit Item</button></a>
