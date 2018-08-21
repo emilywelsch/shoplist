@@ -8,14 +8,14 @@ describe "Signup Page" do
     expect(last_response.status).to eq(200)
   end
 
-  it 'signup directs user to books index' do
+  it 'signup directs user to items index' do
     params = {
       :username => "skittles123",
       :email => "skittles@aol.com",
       :password => "rainbows"
     }
     post '/signup', params
-    expect(last_response.location).to include("/books")
+    expect(last_response.location).to include("/items")
   end
 
   it 'does not let a user sign up without a username' do
@@ -59,7 +59,7 @@ describe "Signup Page" do
     session = {}
     session[:user_id] = user.id
     get '/signup'
-    expect(last_response.location).to include('/books')
+    expect(last_response.location).to include('/items')
   end
 end
 
@@ -69,7 +69,7 @@ describe "login" do
     expect(last_response.status).to eq(200)
   end
 
-  it 'loads the books index after login' do
+  it 'loads the items index after login' do
     user = User.create(:username => "becky567", :email => "starz@aol.com", :password => "kittens")
     params = {
       :username => "becky567",
@@ -90,7 +90,7 @@ describe "login" do
     }
     post '/login', params
     get '/login'
-    expect(last_response.location).to include("/books")
+    expect(last_response.location).to include("/items")
   end
 end
 
@@ -112,12 +112,12 @@ describe "logout" do
     expect(last_response.location).to include("/")
   end
 
-  it 'does not load /books if user not logged in' do
-    get '/books'
+  it 'does not load /items if user not logged in' do
+    get '/items'
     expect(last_response.location).to include("/login")
   end
 
-  it 'does load /books if user is logged in' do
+  it 'does load /items if user is logged in' do
     user = User.create(:username => "becky567", :email => "starz@aol.com", :password => "kittens")
 
 
@@ -126,15 +126,15 @@ describe "logout" do
     fill_in(:username, :with => "becky567")
     fill_in(:password, :with => "kittens")
     click_on('submit')
-    expect(page.current_path).to eq('/books')
+    expect(page.current_path).to eq('/items')
   end
 end
 
 describe 'user show page' do
-  it 'shows all a single users books' do
+  it 'shows all a single users items' do
     user1 = User.create(:username => "becky567", :email => "starz@aol.com", :password => "kittens")
-    book1 = Book.create(:title => "tweeting!", :user_id => user1.id)
-    book2 = Book.create(:title => "look at this tweet", :user_id => user1.id)
+    item1 = Item.create(:name => "tweeting!", :user_id => user1.id)
+    item2 = Item.create(:name => "look at this tweet", :user_id => user1.id)
 
     visit '/login'
 
@@ -144,7 +144,6 @@ describe 'user show page' do
 
     visit "/users/#{user1.slug}"
     expect(last_response.body).to include("tweeting!")
-    expect(last_response.body).to include("look at this tweet") 
+    expect(last_response.body).to include("look at this tweet")
   end
 end
-
