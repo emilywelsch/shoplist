@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 
-    <title>SinatraUsersBooksAuthors</title>
+    <title>ShopList</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -16,20 +16,20 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>Users & Books</h1>
+        <h1>Users & Items</h1>
       </header>
 
         <%= yield %>
 
       <footer class="branding">
         <% if logged_in? %>
-          <a href="/books/new"><small>Create Book</small></a>
+          <a href="/items/new"><small>Add Item to Shopping List</small></a>
           <a href="/logout"><small>Log Out</small></a>
         <% else %>
           <a href="/signup"><small>Sign Up</small></a>
           <a href="/login"><small>Log In</small></a>
         <%end%>
-        <p><small>&copy; 2018 <strong>SinatraUsersBooksAuthors</strong></small></p>
+        <p><small>&copy; 2018 <strong>ShopList</strong></small></p>
       </footer>
     </div>
 
