@@ -8,6 +8,11 @@
 
 <% @items.each do |item| %>
   <div>
-    <%= item.name %>
+    <!-- fix this so items belonging go to show page -->
+    <% if @item.user_id == current_user.primary_key %>
+       <a href="/show_item"<%= item.name %></a>
+    <% else %>
+      <%= item.name %>
+    <% end %>
   </div>
 <% end %>
